@@ -113,13 +113,15 @@ export class CartPage implements OnInit {
     }
     else {
       // <!-- 2.0 updates -->
-      if (this.config.checkOutPage == 1)
+      if (this.config.checkOutPage == 1) {
         this.shared.onePageCheckOut();
+      }
       else {
-        if (this.config.appNavigationTabs)
-          this.navCtrl.navigateForward(this.config.currentRoute + "/shipping-address");
-        else
-          this.navCtrl.navigateForward("/shipping-address");
+        this.navCtrl.navigateForward("/save-address");
+        // if (this.config.appNavigationTabs)
+        //   this.navCtrl.navigateForward(this.config.currentRoute + "/save-address");
+        // else
+        //   this.navCtrl.navigateForward("/save-address");
       }
 
     }

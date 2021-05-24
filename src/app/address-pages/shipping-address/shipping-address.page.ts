@@ -53,6 +53,7 @@ export class ShippingAddressPage implements OnInit {
       return false;
   }
   submit() {
+    console.log(this.shared.billing);
     if (this.config.appNavigationTabs)
       this.navCtrl.navigateForward(this.config.currentRoute + "/billing-address");
     else

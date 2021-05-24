@@ -238,21 +238,16 @@ export class AppComponent {
   loadHomePage() {
     this.storage.get('firsttimeApp').then((val) => {
       let value = val;
-      //if (this.config.showIntroPage == 0) value = 'firstTime';
-      if (this.config.askAddressOnStart == true) value = 'askAddress';
-      // if (value == 'firstTime') {
+      if (this.config.showIntroPage == 0) value = 'firstTime';
+      if (value == 'firstTime') {
 
-      //   this.openHomePage();
-      //   this.config.checkingNewSettingsFromServer();
-      // }
-      if (value == 'askAddress') {
-        this.navCtrl.navigateRoot("save-address");
+        this.openHomePage();
         this.config.checkingNewSettingsFromServer();
       }
-      // else {
-      //   this.navCtrl.navigateRoot("intro");
-      // }
-      //this.storage.set('firsttimeApp', 'firstTime');
+      else {
+        this.navCtrl.navigateRoot("intro");
+      }
+      this.storage.set('firsttimeApp', 'firstTime');
       setTimeout(() => {
         this.appEventsService.publish("openDeepLink", "");
       }, 500);

@@ -12,6 +12,7 @@ import { SelectZonesPage } from '../modals/select-zones/select-zones.page';
 import { GeoLocationAddress } from './modals';
 import { Storage } from '@ionic/storage';
 import { AppEventsService } from 'src/providers/app-events/app-events.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-save-address',
@@ -62,7 +63,7 @@ export class SaveAddressPage implements OnInit {
   }
 
   submit() {
-
+    this.loading.show();
     var addressJson  = {
       locationUrl: this.shared.locationUrl,
       phone: this.shared.phone,
@@ -74,13 +75,54 @@ export class SaveAddressPage implements OnInit {
     };
     var cacheAddress = JSON.stringify(addressJson);
     this.storage.set('cacheAddress', cacheAddress);
-    this.openHomePage();
+    this.copyAppShippingBilling();
 
+    if (this.config.appNavigationTabs)
+      this.navCtrl.navigateForward(this.config.currentRoute + "/shipping-method");
+    else
+      this.navCtrl.navigateForward("shipping-method");
+
+    this.applicationRef.tick();
+    this.loading.hide();
   }
 
   openHomePage() {
     this.appEventsService.publish("openHomePage", "");
     this.config.checkingNewSettingsFromServer();
+  }
+
+  copyAppShippingBilling() {
+    this.shared.shipping.full_name  = this.shared.full_name;
+    this.shared.shipping.postcode  = this.shared.postcode;
+    this.shared.shipping.address_1  = this.shared.address_1;
+    this.shared.shipping.address_2  = this.shared.address_2;
+    this.shared.shipping.company  = 'Test Company';
+    this.shared.shipping.country  = 'IN';
+    this.shared.shipping.state  = 'KL';
+    this.shared.shipping.city  = 'Palakkad';
+    this.shared.shipping.first_name  = this.shared.full_name;
+    this.shared.shipping.last_name  = this.shared.full_name;
+    this.shared.shipping.house_name_no  = this.shared.house_name_no;
+    this.shared.shipping.locationUrl  = this.shared.locationUrl;
+    
+
+    this.shared.billing.full_name  = this.shared.full_name;
+    this.shared.billing.postcode  = this.shared.postcode;
+    this.shared.billing.address_1  = this.shared.address_1;
+    this.shared.billing.address_2  = this.shared.address_2;
+    this.shared.billing.company  = 'Test Company';
+    this.shared.billing.country  = 'IN';
+    this.shared.billing.state  = 'KL';
+    this.shared.billing.city  = 'Palakkad';
+    this.shared.billing.phone = this.shared.phone;
+    this.shared.billing.first_name  = this.shared.full_name;
+    this.shared.billing.last_name  = this.shared.full_name;
+    this.shared.billing.house_name_no  = this.shared.house_name_no;
+    this.shared.billing.last_name  = '';
+    this.shared.billing.email = 'demoemail@gmail.com';
+    this.shared.billing.locationUrl  = this.shared.locationUrl;
+  
+
   }
 
   

@@ -89,7 +89,8 @@ export class OrderPage implements OnInit {
       one_page: onePage,
       platform: this.shared.device,
     };
-    console.log(this.shared.customerData);
+    //console.log(this.shared.customerData);
+    console.log(data);
     this.shared.openCheckoutWebview(data);
   };
 
