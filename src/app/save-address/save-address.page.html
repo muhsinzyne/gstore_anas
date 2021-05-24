@@ -1,0 +1,100 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title> {{'Billing Address'| translate }} </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+
+    <ion-row>
+        <ion-col size="8" *ngIf="shared.locationUrl == null">
+            <ion-button fill="clear" (click)="getLocationAddress()">
+                <ion-icon name="locate"></ion-icon> {{'Share Location'|translate}}
+            </ion-button>
+        </ion-col>
+        <ion-col size="8" *ngIf="shared.locationUrl != null">
+            <ion-button fill="clear" (click)="getLocationAddress()">
+                <ion-icon name="locate"></ion-icon> {{'Update Location'|translate}}
+            </ion-button>
+        </ion-col>
+
+        <ion-col size="4">
+            <div *ngIf="shared.locationUrl == null">
+                Location Not Shared
+            </div>
+            <div *ngIf="shared.locationUrl != null ">
+                Location shared
+            </div>
+        </ion-col>
+
+    </ion-row>
+
+
+
+    <form>
+
+        <ion-item>
+            <ion-label position="floating">{{'Phone'|translate}}</ion-label>
+            <ion-input type="tel" name="phone" [(ngModel)]="shared.phone" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">{{'Post code'|translate}}</ion-label>
+            <ion-input type="text" name="shipping_postcode" [(ngModel)]="shared.postcode" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">{{'Full Name'|translate}}</ion-label>
+            <ion-input type="text" name="shipping_firstname" [(ngModel)]="shared.full_name" required></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label position="floating">{{'House Name & No' |translate}}</ion-label>
+            <ion-input type="text" name="house_name_no" [(ngModel)]="shared.house_name_no"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">{{'Address'|translate}} 1</ion-label>
+            <ion-input type="text" name="address" [(ngModel)]="shared.address_1" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">{{'Address'|translate}} 2</ion-label>
+            <ion-input type="text" name="address2" [(ngModel)]="shared.address_2"></ion-input>
+        </ion-item>
+
+
+
+
+
+        <!-- <ion-item>
+            <ion-label position="floating">{{'Country'|translate}}</ion-label>
+            <ion-input type="text" name="shipping_country" tappable (click)="selectCountryPage()" readonly [(ngModel)]="shared.billingCountryName" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">{{'State'|translate}}</ion-label>
+            <ion-input type="text" required name="shipping_zone" tappable (click)="selectZonePage()" readonly [(ngModel)]="shared.billingStateName"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">{{'City'|translate}}</ion-label>
+            <ion-input type="text" name="shipping_city" [(ngModel)]="shared.billing.city" required></ion-input>
+        </ion-item> -->
+
+        <!-- <ion-item>
+            <ion-label position="floating">{{'Email'|translate}}</ion-label>
+            <ion-input type="email" name="email" [(ngModel)]="shared.billing.email" required></ion-input>
+        </ion-item> -->
+
+    </form>
+
+</ion-content>
+
+<ion-footer>
+    <ion-button expand="full" color="secondary" (click)="submit()" [disabled]="disableButton()">{{'Next'|translate}}
+    </ion-button>
+</ion-footer>
