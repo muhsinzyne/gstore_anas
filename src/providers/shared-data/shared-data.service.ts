@@ -570,32 +570,68 @@ export class SharedDataService {
     return data;
   }
   resetData() {
-    this.billing = {
-      first_name: '',
-      last_name: '',
-      company: '',
-      address_1: '',
-      address_2: '',
-      city: '',
-      state: '',
-      postcode: '',
-      country: '',
-      email: '',
-      phone: ''
-    };
+    this.billing.first_name = '';
+    this.billing.last_name = '';
+    this.billing.company = '';
+    this.billing.address_1 = '';
+    this.billing.address_2 = '';
+    this.billing.city = '';
+    this.billing.state = '';
+    this.billing.postcode = '';
+    this.billing.state = '';
+    this.billing.postcode = '';
+    this.billing.country = '';
+    this.billing.email = '';
+    this.billing.phone = '';
+
+    this.shipping.first_name = '';
+    this.shipping.last_name = '';
+    this.shipping.company = '';
+    this.shipping.address_1 = '';
+    this.shipping.address_2 = '';
+    this.shipping.city = '';
+    this.shipping.state = '';
+    this.shipping.postcode = '';
+    this.shipping.country = '';
+    // this.shipping = {
+    //   first_name: '',
+    //   last_name: '',
+    //   company: '',
+    //   address_1: '',
+    //   address_2: '',
+    //   city: '',
+    //   state: '',
+    //   postcode: '',
+    //   country: ''
+    // };
+
+
+    // this.billing = {
+    //   first_name: '',
+    //   last_name: '',
+    //   company: '',
+    //   address_1: '',
+    //   address_2: '',
+    //   city: '',
+    //   state: '',
+    //   postcode: '',
+    //   country: '',
+    //   email: '',
+    //   phone: ''
+    // };
     this.billingCountryName = "";
     this.billingStateName = "";
-    this.shipping = {
-      first_name: '',
-      last_name: '',
-      company: '',
-      address_1: '',
-      address_2: '',
-      city: '',
-      state: '',
-      postcode: '',
-      country: ''
-    };
+    // this.shipping = {
+    //   first_name: '',
+    //   last_name: '',
+    //   company: '',
+    //   address_1: '',
+    //   address_2: '',
+    //   city: '',
+    //   state: '',
+    //   postcode: '',
+    //   country: ''
+    // };
     this.shippingCountryName = "";
     this.shippingStateName = "";
   }
